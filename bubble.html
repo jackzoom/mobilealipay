@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #parent{
+            width: 300px;
+            height: 300px;
+            background: #000;
+            margin: 0 auto;
+            border: 1px solid transparent;
+
+        }
+        #mine{
+            width: 150px;
+            height: 150px;
+            background: teal;
+            margin: 75px auto;
+            border: 1px solid transparent;
+        }
+        #child{
+            width: 50px;
+            height: 50px;
+            background: red;
+            margin: 50px auto;
+            border: 1px solid transparent;
+        }
+    </style>
+</head>
+<body>
+<div id="parent">
+    <div id="mine">
+        <div id="child"></div>
+    </div>
+</div>
+
+
+<script>
+    var parent=document.getElementById("parent");
+    var mine=document.getElementById("mine");
+    var child=document.getElementById("child");
+if(document.all){
+ parent.attachEvent("onclick",function(){alert("parent!")});
+        mine.attachEvent("onclick",function(event){alert("mine!");event.cancelBubble=true});
+        child.attachEvent("onclick",function(event){alert("child!");event.cancelBubble=true});
+
+}
+else
+{
+ parent.addEventListener("click",function(){alert("parent!");},false);
+    mine.addEventListener("click",function(event){alert("mine!");event.stopPropagation()},false);
+    child.addEventListener("click",function(event){alert("child!");event.stopPropagation()},false);
+}
+
+   
+
+
+
+       
+
+//   document.onkeydown=function(e){
+//       if(e.keyCode==13){
+//           alert("tab!")
+//       }
+//   }
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

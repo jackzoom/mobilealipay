@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #content{
+            width: 270px;
+            height: 500px;
+            background-color: skyblue;
+            position: relative;
+            left: 100px;
+            top: 50px;
+            overflow: hidden;
+        }
+        #main{
+            width: 270px;
+            height: 300px;
+            background-color: bisque;
+            position: absolute;
+            top:500px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            transition: all .5s ease-in-out;
+        }
+        #fork{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            text-align: center;
+            line-height: 20px;
+            color: black;
+            right:5px;
+            font-size: 18px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        span{
+            background-color: chartreuse;
+            display: block;
+            width: 100px;
+            height: 20px;
+            margin-left:80px;
+            margin-top: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <span id="touch">点我啊！！！</span>
+        <div id="main">
+            <div id="fork">x</div>
+        </div>
+    </div>
+</body>
+<script>
+    function getId(id){
+        return document.getElementById(id)?document.getElementById(id):null;
+    }
+    function getStyle(obj,attr){
+        if(document.all){
+            return parseInt(obj.currentStyle[attr]);
+        }else{
+            return parseInt(getComputedStyle(obj,false)[attr]);
+        }
+    }
+    var content_id=getId("content");
+    var fork_id=getId("fork");
+    var main_id=getId("main");
+    var touch_id=getId("touch");
+    touch_id.addEventListener("click",function () {
+
+        moving(200);
+    },false);
+    fork_id.addEventListener("click",function () {
+        moving(500)
+    },false);
+    content_id.addEventListener("click",function () {
+        moving(500);
+    },false);
+    main_id.addEventListener("click",function () {
+        if(document.all){
+            event.cancelable=true;
+        }else{
+            event.stopPropagation();
+        }
+    });
+    function moving(txt) {
+        if(document.all){
+            event.cancelable=true;
+        }else{
+            event.stopPropagation();
+        }
+        main_id.style.top=txt+"px";
+    }
+
+</script>
+</html>
