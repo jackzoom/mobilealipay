@@ -15,12 +15,7 @@ function getStyle(obj,attr){
         return parseInt(getComputedStyle(obj,false)[attr]);
     }
 }
-
-// window.onload=function () {
-//     show_data.style.top=-400+"px";
-//     show_data.style.transition="";
-//
-// }
+window
 
 
 
@@ -33,7 +28,7 @@ var main=getObj("main");
 
 btn_Close.addEventListener("click",function () {
 
-    show_data.style.transition="all .8s ease-in-out";
+    show_data.style.transition="all .6s ease-in-out";
     moving(0);
     console.log(show_data.style.top);
 
@@ -42,18 +37,22 @@ btn_Close.addEventListener("click",function () {
 btn_Close.onmouseover=function () {
 
     btn_Close.style.background="#cccccc";
-    btn_Close.style.fontSize="15px";
+    btn_Close.style.fontSize="18px";
 };
 btn_Close.onmouseout=function () {
 
     btn_Close.style.background="white";
     btn_Close.style.fontSize="20px";
 };
-
-
+btn_Close.onmousedown= function () {
+    btn_Close.style.background="red";
+};
+btn_Close.onmouseup= function () {
+    btn_Close.style.background="#cccccc";
+};
 click_show.addEventListener("click",function () {
 
-    show_data.style.transition="all .8s ease-in-out";
+    show_data.style.transition="all .6s ease-in-out";
     moving(-400);
     click_show.innerHTML="单击空白处隐藏";
 });
